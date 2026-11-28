@@ -289,7 +289,6 @@ export function ProfileFields({
             <LockedField id="jabatan" label="Jabatan" icon={Briefcase} value={initial.jabatan || "Belum diatur panitia"} />
           )}
         </div>
-        {profileEmail !== undefined && shirtSize}
       </Section>
 
       <Section step={firstStep + 1} title="Kontak & Kedatangan" description="Dipakai panitia untuk koordinasi selama acara.">
@@ -367,7 +366,7 @@ export function ProfileFields({
           </div>
         </fieldset>
 
-        {profileEmail === undefined && shirtSize}
+        {shirtSize}
       </Section>
     </>
   );

@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   // Izinkan akses dev server dari HP di jaringan Wi-Fi yang sama
   allowedDevOrigins: ["192.168.*.*", "10.*.*.*", "172.16.*.*"],
   cacheComponents: true,
+  // ExcelJS memakai API Node; adapter S3 opsional unzipper tidak digunakan aplikasi.
+  serverExternalPackages: ["exceljs"],
   // Cover album galeri dari bucket Storage publik 'konten' (lib/content/schema.ts).
   images: {
     remotePatterns: [{ protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/konten/**" }],

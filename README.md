@@ -159,9 +159,22 @@ Akses aplikasi di browser:
 legacy `NPM_CONFIG_CACHE_DIR`/`npm_config_cache_dir` dari environment perintah.
 Konfigurasi cache npm yang didukung adalah `NPM_CONFIG_CACHE`. Jika variabel
 legacy dipasang di Vercel Project Settings, hapus atau ganti namanya di sana.
-Izin postinstall esbuild dicatat per versi pada `allowScripts` di `package.json`;
-saat memperbarui esbuild, tinjau kembali izinnya. Entrypoint autentikasi Next.js
-memakai `proxy.ts`; logika sesi dan pembatasan akses ada di `lib/supabase/middleware.ts`.
+Gunakan Node.js 22.x (minimal 22.22.2 untuk npm 12.2.3) dan npm yang mendukung
+`allowScripts` (npm 12) saat memverifikasi instalasi deployment.
+Commit `package-lock.json` bersama perubahan dependensi agar
+`npm ci` memakai versi yang sama. Izin postinstall esbuild dicatat per versi pada
+`allowScripts` di `package.json`; saat memperbarui esbuild, tinjau kembali izinnya.
+Postinstall core-js ditolak secara eksplisit karena hanya menampilkan pesan donasi.
+ExcelJS tetap memakai versi 4.4.0 dengan overrides khusus untuk unzipper,
+fast-csv, uuid, dan glob pada archiver-utils di dalam dependency tree ExcelJS.
+Archiver tetap memakai versi 5 agar normalisasi stream kompatibel dengan ExcelJS.
+ExcelJS dimuat sebagai paket server eksternal di Next.js agar adapter S3 opsional
+unzipper tidak dibundel ke aplikasi yang hanya membaca dan menulis workbook lokal.
+Overrides peer ESLint pada plugin React,
+import, dan aksesibilitas mengikuti ESLint 10 yang didukung eslint-config-next 16.4.6;
+jalankan lint serta tes impor/ekspor Excel setiap memperbarui overrides ini.
+Entrypoint autentikasi Next.js memakai `proxy.ts`; logika sesi dan pembatasan akses
+ada di `lib/supabase/middleware.ts`.
 
 ### Metode 1: Menggunakan Vercel Dashboard (Rekomendasi)
 1. Push kode ke repositori GitHub / GitLab Anda.

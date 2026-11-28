@@ -72,7 +72,7 @@ export function AccountDropdown({
         </DropdownMenuGroup>
         <DropdownMenuSeparator className="mx-0 my-0.5 bg-[#DCE8E5]" />
         {isAdmin && (
-          <DropdownMenuItem render={<Link href="/dashboard" />} className={itemClass}>
+          <DropdownMenuItem render={<Link href="/dashboard" target="_blank" rel="noopener noreferrer" />} className={itemClass}>
             <LayoutDashboard className="size-4 text-primary!" />
             <span className="flex-1">Dashboard</span>
             <span className="rounded-full bg-[#FFF7E8] px-2 py-0.5 text-[11px] font-semibold text-[#9A6A12]!">Admin</span>

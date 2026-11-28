@@ -1,0 +1,29 @@
+.moreSheet {
+  translate: 0 var(--sheet-drag-offset, 0px);
+  transition-property: translate, opacity;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.moreSheet[data-starting-style],
+.moreSheet[data-ending-style] {
+  translate: 0 100%;
+}
+
+.moreSheet[data-ending-style],
+.moreSheet[data-returning] {
+  transition-duration: 250ms;
+}
+
+.moreSheet[data-dragging] {
+  translate: 0 var(--sheet-drag-offset, 0px);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moreSheet,
+  .moreSheet[data-ending-style],
+  .moreSheet[data-returning] {
+    transition: none;
+  }
+}

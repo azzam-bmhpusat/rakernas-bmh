@@ -66,6 +66,8 @@ import {
   TOP_THRESHOLD_PX,
   type NavKey,
 } from "@/lib/nav-active-key";
+import styles from "./site-header.module.css";
+import { useSheetDrag } from "./use-sheet-drag";
 
 const HASH_PATTERN = /^#[\w-]+$/;
 const HOME_LINK = "/#top";
@@ -505,6 +507,10 @@ function MobileTabBar({
   qrToken?: Promise<string | null>;
 }) {
   const reduceMotion = useReducedMotion() ?? false;
+  const { sheetRef, handleProps, onOpenChangeComplete } = useSheetDrag(
+    moreOpen,
+    () => onMoreOpenChange(false),
+  );
   const { containerRef: tabsRef, indicatorRef: tabsPillRef } =
     useSlidingIndicator<HTMLUListElement>(activeKey);
   const renderTab = (item: NavItem) => {
@@ -532,7 +538,11 @@ function MobileTabBar({
       aria-label="Navigasi seluler"
       className="site-container pointer-events-none fixed inset-x-0 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 sm:bottom-4 lg:hidden"
     >
-      <Sheet open={moreOpen} onOpenChange={onMoreOpenChange}>
+      <Sheet
+        open={moreOpen}
+        onOpenChange={onMoreOpenChange}
+        onOpenChangeComplete={onOpenChangeComplete}
+      >
         <ul
           ref={tabsRef}
           className="pointer-events-auto relative mx-auto flex h-[60px] items-center justify-between rounded-[28px] bg-white/80 bg-linear-to-b from-white/50 via-white/0 via-60% to-white/0 p-2 shadow-[0_10px_30px_#04362F24,0_2px_6px_#04362F12,inset_0_1px_0_#FFFFFFE6] backdrop-blur-[24px] backdrop-saturate-150 px-3.5"
@@ -561,17 +571,26 @@ function MobileTabBar({
         </ul>
 
         <SheetContent
+          ref={sheetRef}
           side="bottom"
           showCloseButton={false}
-          className="max-h-[85dvh] gap-0 overflow-hidden rounded-t-[28px] border-0 bg-white/72 bg-linear-to-b from-white/60 via-white/0 via-35% to-white/0 p-0 shadow-[0_-8px_40px_#04363029,inset_0_1px_0_#FFFFFFF2] backdrop-blur-[32px] backdrop-saturate-150 sm:mx-auto sm:max-w-md"
+          className={cn(
+            styles.moreSheet,
+            "max-h-[85dvh] gap-0 overflow-hidden rounded-t-[28px] border-0 bg-white/72 bg-linear-to-b from-white/60 via-white/0 via-35% to-white/0 p-0 shadow-[0_-8px_40px_#04363029,inset_0_1px_0_#FFFFFFF2] backdrop-blur-[32px] backdrop-saturate-150 sm:mx-auto sm:max-w-md",
+          )}
         >
           <span
             aria-hidden="true"
             className={cn(glassEdge, "rounded-t-[28px] [background:linear-gradient(to_bottom,#FFFFFF,#FFFFFF33)_border-box]")}
           />
-          <div className="flex justify-center pt-2.5 pb-1">
+          <button
+            {...handleProps}
+            type="button"
+            aria-label="Tutup Menu Lainnya"
+            className="flex min-h-11 w-full shrink-0 touch-none cursor-grab items-center justify-center rounded-t-[28px] select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring active:cursor-grabbing"
+          >
             <span aria-hidden="true" className="h-[5px] w-10 shrink-0 rounded-[3px] bg-[#04362F33]" />
-          </div>
+          </button>
           <SheetHeader className="flex-row items-center justify-between gap-3 px-6 pt-4 pb-2">
             <SheetTitle className="font-heading text-[22px] font-bold text-primary">
               Menu Lainnya

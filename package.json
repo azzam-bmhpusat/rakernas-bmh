@@ -2,8 +2,12 @@
   "name": "rakernas-bmh",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "allowScripts": {
-    "esbuild@0.28.2": true
+    "esbuild@0.28.2": true,
+    "core-js": false
   },
   "scripts": {
     "dev": "next dev",
@@ -29,7 +33,7 @@
     "cmdk": "^1.1.1",
     "cn": "^0.5.2",
     "embla-carousel-react": "^8.6.0",
-    "exceljs": "^4.4.0",
+    "exceljs": "4.4.0",
     "html5-qrcode": "^2.3.8",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.9",
@@ -56,12 +60,31 @@
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "eslint": "10.16.0",
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",
     "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "exceljs@4.4.0": {
+      "unzipper": "0.12.5",
+      "fast-csv": "5.0.8",
+      "uuid": "11.1.1",
+      "archiver-utils": {
+        "glob": "14.0.6"
+      }
+    },
+    "eslint-plugin-react": {
+      "eslint": "$eslint"
+    },
+    "eslint-plugin-import": {
+      "eslint": "$eslint"
+    },
+    "eslint-plugin-jsx-a11y": {
+      "eslint": "$eslint"
+    }
   },
   "optionalDependencies": {
     "@rolldown/binding-linux-x64-gnu": "1.2.19",
