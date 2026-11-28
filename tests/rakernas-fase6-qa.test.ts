@@ -88,12 +88,13 @@ describe("Fase 6 — QA & Penyelesaian: Landing Page Rakernas BMH", () => {
       });
     });
 
-    it("Info transportasi memprioritaskan tiga pemberhentian lokal lalu dua bandara", () => {
-      expect(TRANSPORT_DATA.items).toHaveLength(5);
+    it("Info transportasi memprioritaskan tiga pemberhentian lokal lalu Pasar Senen dan dua bandara", () => {
+      expect(TRANSPORT_DATA.items).toHaveLength(6);
       const expectedData = [
         { name: "Halte Hotel Ambhara Blok M", accessInfo: "Di dekat hotel", icon: "bus", travelMode: "walking" },
         { name: "Terminal Blok M / Halte Transjakarta Blok M", accessInfo: "Jalan kaki ±7 menit", icon: "bus", travelMode: "walking" },
         { name: "Stasiun MRT Blok M BCA", accessInfo: "Sekitar 660 m dari hotel", icon: "train", travelMode: "walking" },
+        { name: "Stasiun Pasar Senen", accessInfo: "Transportasi online ke hotel", icon: "train", travelMode: "driving" },
         { name: "Bandara Halim Perdanakusuma (HLP)", accessInfo: "Bandara terdekat · Taksi/mobil ke hotel", icon: "plane", travelMode: "driving" },
         { name: "Bandara Soekarno–Hatta (CGK)", accessInfo: "Alternatif bandara · Taksi/mobil ke hotel", icon: "plane", travelMode: "driving" },
       ];
@@ -104,7 +105,7 @@ describe("Fase 6 — QA & Penyelesaian: Landing Page Rakernas BMH", () => {
       });
       expect(TRANSPORT_DATA.destination.name).toBe("Ambhara Hotel Jakarta");
       expect(TRANSPORT_DATA.destination.address).toContain("Jl. Iskandarsyah I No.1");
-      expect(JSON.stringify(TRANSPORT_DATA.items)).not.toMatch(/fares|Pasar Senen|Gambir|Tanjung Priok|Pulogadung|Kalideres|Kampung Rambutan/);
+      expect(JSON.stringify(TRANSPORT_DATA.items)).not.toMatch(/fares|Gambir|Tanjung Priok|Pulogadung|Kalideres|Kampung Rambutan/);
     });
 
     it("Tamu Undangan menjelaskan empat kolom pencarian dan detail tamu", () => {

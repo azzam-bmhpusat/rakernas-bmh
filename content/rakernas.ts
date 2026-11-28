@@ -249,8 +249,9 @@ export const LOCATION_DATA = {
   ] as GalleryItem[],
 };
 
-/** Ikon sekitar Blok M, urut utara → selatan. Foto: Wikimedia Commons. */
+/** Ikon sekitar Blok M, M Bloc Space ditampilkan pertama. Foto: Wikimedia Commons. */
 export const JAKARTA_EXPLORE_GALLERY: GalleryItem[] = [
+  { src: "/galeri-jakarta-explore/m-bloc-space.jpg", caption: "M Bloc Space", credit: "Foto: VulcanSphere / CC BY 4.0, Wikimedia Commons" },
   { src: "/galeri-jakarta-explore/stasiun-mrt-senayan.jpg", caption: "Stasiun MRT Senayan", credit: "Foto: Vulphere / CC BY 4.0, Wikimedia Commons" },
   { src: "/galeri-jakarta-explore/stasiun-mrt-asean.jpg", caption: "MRT Jakarta di Stasiun ASEAN", credit: "Foto: VulcanSphere / CC BY 4.0, Wikimedia Commons" },
   { src: "/galeri-jakarta-explore/masjid-agung-al-azhar.jpg", caption: "Masjid Agung Al-Azhar", credit: "Foto: Rhmtdns / CC BY-SA 4.0, Wikimedia Commons" },
@@ -258,14 +259,13 @@ export const JAKARTA_EXPLORE_GALLERY: GalleryItem[] = [
   { src: "/galeri-jakarta-explore/stasiun-mrt-blok-m.jpg", caption: "Stasiun MRT Blok M", credit: "Foto: VulcanSphere / CC BY 4.0, Wikimedia Commons" },
   { src: "/galeri-jakarta-explore/blok-m-plaza.jpg", caption: "Blok M Plaza", credit: "Foto: Vulphere / CC BY 4.0, Wikimedia Commons" },
   { src: "/galeri-jakarta-explore/terminal-blok-m.jpg", caption: "Terminal Blok M", credit: "Foto: Aqilla Rahmi / CC0, Wikimedia Commons" },
-  { src: "/galeri-jakarta-explore/m-bloc-space.jpg", caption: "M Bloc Space", credit: "Foto: VulcanSphere / CC BY 4.0, Wikimedia Commons" },
 ];
 
 export const TRANSPORT_DATA = {
   title: "Info Transportasi",
   badge: "Panduan Transportasi",
   subtitle: "Akses menuju",
-  description: "Pilih halte, terminal, stasiun MRT, atau bandara kedatangan, lalu buka rute menuju hotel pada peta.",
+  description: "Pilih halte, terminal, stasiun kereta, atau bandara kedatangan, lalu buka rute menuju hotel pada peta.",
   travelNote: "Waktu perjalanan bersifat perkiraan. Akses jalan kaki mengikuti pintu keluar dan penyeberangan; waktu berkendara bergantung pada lalu lintas.",
   fareNote: "Harga merupakan perkiraan dan dapat berubah sesuai layanan, waktu pemesanan, serta biaya tambahan.",
   walkingLinkLabel: "Jalan kaki ke hotel",
@@ -282,7 +282,7 @@ export const TRANSPORT_DATA = {
       accessInfo: "Di dekat hotel",
       distanceInfo: "Sangat dekat, bisa jalan kaki",
       transportMode: "Ojek Online",
-      estimatedFare: "Rp 40.000 – 60.000",
+      estimatedFare: "Rp 5.000 – 10.000",
       travelMode: "walking",
       description: "Pilihan utama untuk turun di dekat Ambhara Hotel Jakarta. Periksa posisi halte dan penyeberangan pada peta sebelum berjalan ke pintu masuk hotel.",
       mapsQuery: "Halte Hotel Ambhara Blok M, Jalan Iskandarsyah, Jakarta Selatan",
@@ -293,7 +293,7 @@ export const TRANSPORT_DATA = {
       accessInfo: "Jalan kaki ±7 menit",
       distanceInfo: "Terminal Blok M dan MRT Blok M BCA berjarak sekitar 7 menit jalan kaki dari hotel",
       transportMode: "Ojek Online",
-      estimatedFare: "Rp 40.000 – 60.000",
+      estimatedFare: "Rp 10.000 – 15.000",
       travelMode: "walking",
       description: "Turun di kawasan Terminal Blok M atau halte Transjakarta Blok M, lalu lanjutkan berjalan kaki menuju Ambhara Hotel di Jalan Iskandarsyah. Ikuti jalur pejalan kaki dan penyeberangan pada peta.",
       mapsQuery: "Terminal Blok M, Jakarta Selatan",
@@ -304,10 +304,21 @@ export const TRANSPORT_DATA = {
       accessInfo: "Sekitar 660 m dari hotel",
       distanceInfo: "Sekitar 660 m dari hotel",
       transportMode: "Ojek Online",
-      estimatedFare: "Rp 40.000 – 60.000",
+      estimatedFare: "Rp 10.000 – 15.000",
       travelMode: "walking",
       description: "Setelah keluar dari Stasiun MRT Blok M BCA, lanjutkan berjalan kaki menuju Ambhara Hotel di Jalan Iskandarsyah. Pilih pintu keluar dan jalur penyeberangan sesuai petunjuk peta.",
       mapsQuery: "Stasiun MRT Blok M BCA, Jakarta Selatan",
+    },
+    {
+      name: "Stasiun Pasar Senen",
+      icon: "train",
+      accessInfo: "Transportasi online ke hotel",
+      distanceInfo: "Tujuan: Jl. Iskandarsyah I, Melawai, Kebayoran Baru",
+      transportMode: "Transportasi online",
+      estimatedFare: "Rp 33.000 – 45.000",
+      travelMode: "driving",
+      description: "Dari Stasiun Pasar Senen, lanjutkan menuju Ambhara Hotel Jakarta di Jl. Iskandarsyah I, Melawai, Kebayoran Baru. Estimasi biaya transportasi sekitar Rp 33.000–45.000.",
+      mapsQuery: "Stasiun Pasar Senen, Jakarta Pusat",
     },
     // Halim terdekat dan CGK alternatif: turkishairlinesholidays.com/en-om/ambhara-hotel.
     {
@@ -389,5 +400,5 @@ export const FOOTER_DATA: FooterInfo = {
 export const HADROH_TEAM = {
   title: "Tim Hadroh",
   name: "Shoutul Hidayah",
-  description: "TIM Hadroh santri SMP-MA Hidayatullah Depok",
+  description: "Acara ini akan diiringi lantunan selawat dan tabuhan rebana dari Tim Hadroh Shoutul Hidayah, santri SMP–MA Hidayatullah Depok, yang turut menghadirkan suasana hangat dan penuh kebersamaan sepanjang acara.",
 };

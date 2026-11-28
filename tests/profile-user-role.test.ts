@@ -93,7 +93,7 @@ describe("profil peserta yang sudah lengkap dikunci", () => {
 
 describe("tampilan untuk role user", () => {
   it("/profile menampilkan ajakan menghubungi panitia, bukan form", () => {
-    const page = read("app/(site)/profile/page.tsx");
+    const page = read("components/profile/profile-content.tsx");
     expect(page).toMatch(/isApplicant \? \(\s*<ApplyParticipantCard \/>/);
     expect(page).toContain("FOOTER_DATA.committee");
     expect(page).toContain("Masuk dengan akun email BMH untuk akses halaman.");

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { ArrowLeft, Camera, Eye, Loader2, Trash2 } from "lucide-react";
+import { ArrowLeft, Camera, Eye, Trash2 } from "lucide-react";
 import { removeAvatar, uploadAvatar, type ProfileActionResult } from "@/app/(site)/profile/actions";
 import { AVATAR_MIME } from "@/lib/avatar";
 import { UserAvatar } from "@/components/auth/user-avatar";
@@ -105,12 +105,6 @@ export function AvatarUpload({ src, name }: { src: string | null; name: string }
             name={name}
             className="size-[72px] text-2xl ring-2 ring-brand-gold shadow-lg shadow-black/20 lg:size-[120px] lg:text-4xl"
           />
-          {isPending && (
-            <span className="absolute inset-0 flex items-center justify-center rounded-full bg-black/45">
-              <Loader2 className="size-7 animate-spin text-white" aria-hidden="true" />
-              <span className="sr-only">Memproses foto…</span>
-            </span>
-          )}
           <span
             aria-hidden="true"
             className="absolute right-0.5 bottom-0.5 hidden size-[34px] items-center justify-center rounded-full bg-brand-gold text-brand-green-night shadow-md lg:flex"
@@ -120,8 +114,9 @@ export function AvatarUpload({ src, name }: { src: string | null; name: string }
         </span>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-white lg:hidden">
           <Camera className="size-3.5" aria-hidden="true" />
-          Ubah foto
+          {isPending ? "Memproses foto…" : "Ubah foto"}
         </span>
+        {isPending && <span role="status" className="hidden text-xs text-white/75 lg:block">Memproses foto…</span>}
       </DialogTrigger>
       <input ref={inputRef} type="file" accept={AVATAR_MIME.join(",")} className="sr-only" onChange={onPick} tabIndex={-1} aria-hidden="true" />
       <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-2xl p-6 sm:max-w-md">
@@ -160,7 +155,6 @@ export function AvatarUpload({ src, name }: { src: string | null; name: string }
             )}
             {isPending && (
               <p role="status" className="flex items-center justify-center gap-2 py-2 text-sm text-muted-foreground">
-                <Loader2 className="size-4 animate-spin" aria-hidden="true" />
                 Memproses foto…
               </p>
             )}

@@ -52,11 +52,12 @@ describe("Fase 5 — Transportasi, Tamu Undangan, Footer", () => {
       expect(transportContent).toContain("lg:col-span-7");
     });
 
-    it("menampilkan tiga pemberhentian lokal diikuti Halim dan Soekarno–Hatta", () => {
+    it("menampilkan tiga pemberhentian lokal dan Pasar Senen diikuti Halim dan Soekarno–Hatta", () => {
       expect(TRANSPORT_DATA.items.map((item) => item.name)).toEqual([
         "Halte Hotel Ambhara Blok M",
         "Terminal Blok M / Halte Transjakarta Blok M",
         "Stasiun MRT Blok M BCA",
+        "Stasiun Pasar Senen",
         "Bandara Halim Perdanakusuma (HLP)",
         "Bandara Soekarno–Hatta (CGK)",
       ]);
@@ -96,6 +97,7 @@ describe("Fase 5 — Transportasi, Tamu Undangan, Footer", () => {
       ["Halte Hotel Ambhara Blok M", "walking"],
       ["Terminal Blok M / Halte Transjakarta Blok M", "walking"],
       ["Stasiun MRT Blok M BCA", "walking"],
+      ["Stasiun Pasar Senen", "driving"],
       ["Bandara Halim Perdanakusuma (HLP)", "driving"],
       ["Bandara Soekarno–Hatta (CGK)", "driving"],
     ])("rute %s menggunakan moda %s menuju Ambhara", (name, mode) => {

@@ -8,7 +8,6 @@ import {
   Briefcase,
   CalendarClock,
   CheckCircle2,
-  Loader2,
   LockKeyhole,
   Mail,
   MapPin,
@@ -26,6 +25,7 @@ import { MODE_KEHADIRAN, MODE_KEHADIRAN_LABEL, UKURAN_BAJU } from "@/lib/partici
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { ProfileSection as Section } from "@/components/profile/profile-layout";
 
 export interface ProfileInitial {
   email: string;
@@ -50,35 +50,6 @@ const groupClass =
 const labelClass = "text-[13px] font-semibold text-ink";
 const optionCard =
   "relative flex cursor-pointer items-center rounded-xl border border-line bg-white transition-colors hover:border-primary/40 has-[:checked]:border-primary has-[:checked]:bg-secondary has-[:focus-visible]:ring-3 has-[:focus-visible]:ring-primary/20";
-
-function Section({
-  step,
-  title,
-  description,
-  children,
-}: {
-  step: number;
-  title: string;
-  description: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="border-b border-line px-5 py-6 last:border-b-0 sm:px-7" aria-labelledby={`profile-step-${step}`}>
-      <div className="mb-5 flex items-start gap-3">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-          {step}
-        </span>
-        <div>
-          <h2 id={`profile-step-${step}`} className="font-heading text-base font-semibold text-primary">
-            {title}
-          </h2>
-          <p className="text-sm text-ink-muted">{description}</p>
-        </div>
-      </div>
-      {children}
-    </section>
-  );
-}
 
 function IconField({
   id,
@@ -442,12 +413,7 @@ export function SubmitBar({
           disabled={isPending}
           className={cn("w-full rounded-xl bg-primary px-6 text-[15px] font-semibold text-white hover:bg-brand-green-deep md:w-auto", inFlow ? "h-11" : "h-12")}
         >
-          {isPending ? (
-            <>
-              <Loader2 className="size-4 animate-spin" aria-hidden="true" />
-              {pendingLabel}
-            </>
-          ) : (
+          {isPending ? pendingLabel : (
             <>
               <Icon className="size-4" aria-hidden="true" />
               {label}

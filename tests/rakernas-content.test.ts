@@ -47,8 +47,8 @@ describe("Fase 1 — Konten Bertipe (PRD Rakernas BMH)", () => {
       });
     });
 
-    it("memiliki tiga pemberhentian lokal dan dua bandara dengan moda yang sesuai", () => {
-      expect(TRANSPORT_DATA.items).toHaveLength(5);
+    it("memiliki tiga pemberhentian lokal, Stasiun Pasar Senen, dan dua bandara dengan moda yang sesuai", () => {
+      expect(TRANSPORT_DATA.items).toHaveLength(6);
       expect(TRANSPORT_DATA.destination.name).toBe("Ambhara Hotel Jakarta");
       TRANSPORT_DATA.items.forEach((item) => {
         expect(item.name).toBeTruthy();
@@ -57,17 +57,18 @@ describe("Fase 1 — Konten Bertipe (PRD Rakernas BMH)", () => {
         expect(item.distanceInfo).toBeTruthy();
         expect(item.transportMode).toBeTruthy();
         expect(item.estimatedFare).toMatch(/^Rp [\d.]+ – [\d.]+$/);
-        expect(item.travelMode).toBe(item.icon === "plane" ? "driving" : "walking");
+        expect(item.travelMode).toBe(item.icon === "plane" || item.name === "Stasiun Pasar Senen" ? "driving" : "walking");
         expect(item.description).toBeTruthy();
         expect(item.mapsQuery).toBeTruthy();
       });
       expect(TRANSPORT_DATA.items.filter((item) => item.travelMode === "walking")).toHaveLength(3);
       expect(TRANSPORT_DATA.items.filter((item) => item.icon === "plane")).toHaveLength(2);
-      expect(new Set(TRANSPORT_DATA.items.map((item) => item.mapsQuery)).size).toBe(5);
+      expect(new Set(TRANSPORT_DATA.items.map((item) => item.mapsQuery)).size).toBe(6);
       expect(TRANSPORT_DATA.items.map((item) => item.estimatedFare)).toEqual([
-        "Rp 40.000 – 60.000",
-        "Rp 40.000 – 60.000",
-        "Rp 40.000 – 60.000",
+        "Rp 5.000 – 10.000",
+        "Rp 10.000 – 15.000",
+        "Rp 10.000 – 15.000",
+        "Rp 33.000 – 45.000",
         "Rp 65.000 – 100.000",
         "Rp 90.000 – 140.000",
       ]);

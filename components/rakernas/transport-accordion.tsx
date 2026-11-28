@@ -19,7 +19,7 @@ type Filter = "all" | TransportItem["icon"];
 const FILTERS: { value: Filter; label: string; icon?: typeof Bus }[] = [
   { value: "all", label: "Semua" },
   { value: "bus", label: "Bus / TJ", icon: Bus },
-  { value: "train", label: "MRT", icon: TrainFront },
+  { value: "train", label: "Kereta / MRT", icon: TrainFront },
   { value: "plane", label: "Pesawat", icon: Plane },
 ];
 
